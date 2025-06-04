@@ -26,21 +26,23 @@ def bubble_sort(lista, mostrar_pasos=False):
     return lista
 
 def ordenar_lista(lista):
-    opcion = input("¿Querés ordenar la lista usando Bubble Sort? (S/N): ").strip().upper()
-    if opcion == "S":
-        mostrar_pasos_input = input("¿Mostrar los pasos del ordenamiento? (S/N): ").strip().upper()
-        mostrar_pasos = mostrar_pasos_input == "S"
-
-        inicio = time.time()
-        lista_ordenada = bubble_sort(lista[:], mostrar_pasos=mostrar_pasos)
-        fin = time.time()
-        tiempo = fin - inicio
-
-        print("Lista ordenada:", lista_ordenada)
-        print(f"Tiempo de ordenamiento: {tiempo:.6f} segundos")
-        return lista_ordenada, tiempo, True
-    else:
+    respuesta = input("¿Querés ordenar la lista usando Bubble Sort? (S/N): ").strip().upper()
+    if respuesta != "S":
         return lista[:], 0.0, False
+    respuesta_pasos = input("¿Mostrar los pasos del ordenamiento? (S/N): ").strip().upper()
+    mostrar_pasos = False
+    if respuesta_pasos == "S":
+        mostrar_pasos = True
+    inicio = time.time()
+    lista_ordenada = bubble_sort(lista[:], mostrar_pasos=mostrar_pasos)
+    fin = time.time()
+    tiempo = fin - inicio
+
+    print("Lista ordenada:", lista_ordenada)
+    print(f"Tiempo de ordenamiento: {tiempo:.6f} segundos")
+
+    return lista_ordenada, tiempo, True
+
 
 def busqueda_binaria(lista, objetivo):
     izquierda, derecha = 0, len(lista) - 1
@@ -87,12 +89,13 @@ def mostrar_resultados(tiempo_ordenamiento, tiempo_busqueda):
 # Programa principal
 
 def main():
+    
     lista = obtener_lista()
     print("\nLista original:", lista)
 
-    lista_ordenada, tiempo_ordenamiento, ordenada = ordenar_lista(lista)
+    lista_ordenada, tiempo_ordenamiento, esta_ordenada = ordenar_lista(lista)
 
-    if ordenada:
+    if esta_ordenada:
         tiempo_busqueda = buscar_elemento(lista_ordenada)
         mostrar_resultados(tiempo_ordenamiento, tiempo_busqueda)
     else:
