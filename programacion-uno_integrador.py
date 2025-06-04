@@ -5,26 +5,12 @@ import time
 
 def obtener_lista():
     print("Trabajo Integrador - Programación I")
-    opcion = input("¿Ingresar los datos manualmente (M) o generarlos aleatoriamente (A)? ").strip().upper()
-
-    if opcion == "M":
-        lista = input("Ingresá los números separados por coma (ej: 3,5,1,9): ").strip()
-        lista = lista.split(",")
-        nueva_lista = []
-        for x in lista:
-            if x.strip().isdigit():
-                nueva_lista.append(int(x))
-                lista = nueva_lista
-    else:
-        cantidad = None
-        while cantidad is None:
-            entrada = input("¿Cuántos números aleatorios querés generar? (ej: 10): ")
-            if entrada.isdigit():
-                cantidad = int(entrada)
-            else:
-                print("Por favor, ingresá un número válido.")
-        lista = random.sample(range(1, cantidad * 10), cantidad)
-
+    entrada = input("¿Cuántos números aleatorios querés generar? (ej: 10): ")
+    while not entrada.isdigit():
+        print("Por favor, ingresá un número válido.")
+        entrada = input("¿Cuántos números aleatorios querés generar? (ej: 10): ")
+    cantidad = int(entrada)
+    lista = random.sample(range(1, cantidad * 10), cantidad)
     return lista
 
 def bubble_sort(lista, mostrar_pasos=False):
