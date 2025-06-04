@@ -80,8 +80,11 @@ def buscar_elemento(lista):
         indice = busqueda_binaria(lista, objetivo)
         fin_busqueda = time.time()
         tiempo_busqueda = fin_busqueda - inicio_busqueda
-
-        resultado = f"Elemento encontrado en la posición {indice}" if indice != -1 else "Elemento no encontrado"
+        
+        if indice != -1:
+            resultado = f"Elemento encontrado en la posición {indice}"
+        else:
+            resultado = "Elemento no encontrado"
         print(resultado)
         print(f"Tiempo de búsqueda: {tiempo_busqueda:.6f} segundos")
         return tiempo_busqueda

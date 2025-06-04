@@ -1,6 +1,6 @@
 # programacion-uno_integrador_VarelaSosa
 
-Trabajo práctico integrador sobre algoritmos de búsqueda y ordenamiento, de la materia Programación I (UTN - Tecnicatura en Programación a Distancia 2025).
+Trabajo práctico integrador sobre algoritmos de búsqueda y ordenamiento, de la materia Programación I (UTN Regional San Nicolás - Tecnicatura en Programación a Distancia 2025).
 
 ## Objetivo
 
