@@ -14,13 +14,15 @@ def obtener_lista():
     return lista
 
 def bubble_sort(lista, mostrar_pasos=False):
-    n = len(lista)
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            if lista[j] > lista[j + 1]:
-                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+    longitud = len(lista)
+    # Establecemos un bucle for para iterar sobre la lista. 
+    # El rango será la longitud de la lista, por más que el ordenamiento se complete antes. Sino deberíamos usar `break` y es mala práctica.
+    for pasada in range(longitud):
+        for i in range(0, longitud - pasada - 1):
+            if lista[i] > lista[i + 1]:
+                lista[i], lista[i + 1] = lista[i + 1], lista[i]
         if mostrar_pasos:
-            print(f"Iteración {i + 1}: {lista}")
+            print(f"Iteración {pasada + 1}: {lista}")
     return lista
 
 def ordenar_lista(lista):
