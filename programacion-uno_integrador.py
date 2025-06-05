@@ -90,16 +90,18 @@ def mostrar_resultados(tiempo_ordenamiento, tiempo_busqueda):
 
 def main():
     
-    lista = obtener_lista()
-    print("\nLista original:", lista)
+    lista_original = obtener_lista()
+    print("\nLista original:", lista_original)
 
-    lista_ordenada, tiempo_ordenamiento, esta_ordenada = ordenar_lista(lista)
+    lista_ordenada, tiempo_ordenamiento, esta_ordenada = ordenar_lista(lista_original)
 
     if esta_ordenada:
         tiempo_busqueda = buscar_elemento(lista_ordenada)
         mostrar_resultados(tiempo_ordenamiento, tiempo_busqueda)
     else:
         print("La búsqueda binaria no está habilitada porque no se ordenó la lista.")
+    
+    print("\nEl programa finalizó.\n")
 
 if __name__ == "__main__":
     main()
