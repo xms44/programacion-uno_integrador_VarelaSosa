@@ -4,6 +4,8 @@ Trabajo práctico integrador sobre algoritmos de búsqueda y ordenamiento, de la
 
 ## Objetivo
 
+El objetivo principal del trabajo es desarrollar un programa en Python que, mediante la combinación de técnicas de ordenamiento y búsqueda, evidencie la mejora en el rendimiento y la organización de la información.
+
 
 ## Video explicativo
 
@@ -13,7 +15,8 @@ Trabajo práctico integrador sobre algoritmos de búsqueda y ordenamiento, de la
 
 ## Contenido
 
-- [Programa Modularizado](./src) -> 
+- [Programa Completo en un solo .py](./programacion-uno_integrador.py) -> 
+- [Programa Modularizado](./src/main.py) -> 
 - [Informe general](./informe_general) -> 
 
 --
@@ -24,4 +27,7 @@ Trabajo práctico integrador sobre algoritmos de búsqueda y ordenamiento, de la
 
 ## Resultados obtenidos y observaciones finales
 
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+
+La información sobre los diferentes tipos de licencia la hemos extraído de [Choose a License](https://choosealicense.com/).
 
