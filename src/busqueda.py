@@ -27,50 +27,67 @@ def busqueda_binaria(lista, objetivo):
     # Si no se encuentra el objetivo, retornamos -1.
     return -1
 
-def buscar_elemento(lista):
+def busqueda_lineal(lista, objetivo):
     """
-    Función para buscar un elemento en una lista ordenada.
+    Función de búsqueda lineal.
 
-    Preguntamos al usuario si quiere buscar un elemento en la lista ordenada.
+    La función recibe una lista y un objetivo a buscar.
     """
-    # Preguntamos al usuario si quiere buscar un elemento en la lista ordenada.
-    buscar = input("¿Querés buscar un número en la lista ordenada? (S/N): ").strip().upper()
+    # Recorremos la lista y comparamos cada elemento con el objetivo.
+    for i, valor in enumerate(lista):
+        # Si encontramos el objetivo, retornamos su índice.
+        if valor == objetivo:
+            return i
+    # Si no se encuentra el objetivo, retornamos -1.
+    return -1
 
-    # Si el usuario quiere buscar un elemento, comienza el proceso de búsqueda.
+def buscar_elemento(lista, ordenada):
+    """
+    Función para buscar un elemento en una lista.
+
+    Preguntamos al usuario si quiere buscar un elemento en la lista.
+    """
+    # Preguntamos al usuario si quiere buscar un elemento en la lista.
+    buscar = input("¿Querés buscar un número en la lista? (S/N): ").strip().upper()
+
     if buscar == "S":
-
-        # Pedimos al usuario que ingrese el número a buscar, ya sea manual o aleatoriamente.
+        # Brindamos al usuario la posibilidad de elegir el número a buscar.
         objetivo_input = input("Ingresá el número que querés buscar (o ENTER para elegir uno aleatorio): ").strip()
-        # Si el usuario ingresa un número, lo convertimos a entero. Si no, elegimos uno aleatorio de la lista.
         if objetivo_input.isdigit():
             objetivo = int(objetivo_input)
         else:
             objetivo = random.choice(lista)
         print("Elemento a buscar:", objetivo)
 
-        # Registramos el tiempo de inicio de la búsqueda.
+        # Brindamos al usuario la posibilidad de elegir el método de búsqueda.
+        if ordenada:
+            tipo_busqueda = input("¿Qué tipo de búsqueda querés usar? (B)inaria / (L)ineal: ").strip().upper()
+        else:
+            # Si la lista no está ordenada, forzamos la búsqueda lineal.
+            print("\nLa lista no está ordenada. Se usará búsqueda lineal.\n")
+            tipo_busqueda = "L"
+
+        # Iniciamos la medición del tiempo de búsqueda.
         inicio_busqueda = time.time()
 
-        # Realizamos la búsqueda binaria para encontrar el índice del objetivo en la lista.
-        indice = busqueda_binaria(lista, objetivo)
+        if tipo_busqueda == "B":
+            indice = busqueda_binaria(lista, objetivo)
+        else:
+            indice = busqueda_lineal(lista, objetivo)
 
-        # Registramos el tiempo de finalización de la búsqueda y calculamos el tiempo total de búsqueda.
+        # Finalizamos la medición del tiempo de búsqueda.
         fin_busqueda = time.time()
         tiempo_busqueda = fin_busqueda - inicio_busqueda
 
-        # Determinamos si el elemento fue encontrado o no y mostramos el resultado.
-        # Si el índice no es -1 (retorno de busqueda_binaria), significa que el elemento está en la lista.
+        # Damos los resultados de la búsqueda.
         if indice != -1:
             resultado = f"Elemento encontrado en la posición {indice}"
         else:
             resultado = "Elemento no encontrado"
 
-        # Mostramos el resultado y el tiempo de búsqueda.
         print(resultado)
         print(f"Tiempo de búsqueda: {tiempo_busqueda:.6f} segundos")
-
-        # Retornamos el tiempo de búsqueda para su uso posterior.
         return tiempo_busqueda
-    # Si la lista no está ordenada, retornamos 0.0 como tiempo de búsqueda.
     else:
+        # Retornamos 0 si la lista está vacía.
         return 0.0
