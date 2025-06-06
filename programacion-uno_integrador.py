@@ -74,7 +74,7 @@ def ordenar_lista(lista):
     # Retornamos la lista ordenada, el tiempo de ordenamiento y `True` para indicar que se realizó el ordenamiento.
     return lista_ordenada, tiempo, True
 
-
+# Función para realizar la búsqueda binaria en una lista ordenada.
 def busqueda_binaria(lista, objetivo):
     # Inicializamos los índices izquierdo y derecho para la búsqueda binaria.
     izquierda, derecha = 0, len(lista) - 1
@@ -96,10 +96,14 @@ def busqueda_binaria(lista, objetivo):
     # Si no se encuentra el objetivo, retornamos -1.
     return -1
 
+# Función para realizar la búsqueda lineal en una lista, tanto ordenada como desordenada.
 def busqueda_lineal(lista, objetivo):
+    # Recorremos la lista y comparamos cada elemento con el objetivo.
     for i, valor in enumerate(lista):
+        # Si encontramos el objetivo, retornamos su índice.
         if valor == objetivo:
             return i
+    # Si no se encuentra el objetivo, retornamos -1.
     return -1
 
 
@@ -108,7 +112,7 @@ def buscar_elemento(lista, ordenada):
     buscar = input("¿Querés buscar un número en la lista? (S/N): ").strip().upper()
 
     if buscar == "S":
-        # Elección del número a buscar
+        # Brindamos al usuario la posibilidad de elegir el número a buscar.
         objetivo_input = input("Ingresá el número que querés buscar (o ENTER para elegir uno aleatorio): ").strip()
         if objetivo_input.isdigit():
             objetivo = int(objetivo_input)
@@ -116,14 +120,15 @@ def buscar_elemento(lista, ordenada):
             objetivo = random.choice(lista)
         print("Elemento a buscar:", objetivo)
 
-        # Elección del método de búsqueda
+        # Brindamos al usuario la posibilidad de elegir el método de búsqueda..
         if ordenada:
             tipo_busqueda = input("¿Qué tipo de búsqueda querés usar? (B)inaria / (L)ineal: ").strip().upper()
         else:
+            # Si la lista no está ordenada, forzamos la búsqueda lineal.
             print("\nLa lista no está ordenada. Se usará búsqueda lineal.\n")
             tipo_busqueda = "L"
 
-        # Inicia el cronómetro
+        # Iniciamos la medición del tiempo de búsqueda.
         inicio_busqueda = time.time()
 
         if tipo_busqueda == "B":
@@ -131,11 +136,11 @@ def buscar_elemento(lista, ordenada):
         else:
             indice = busqueda_lineal(lista, objetivo)
 
-        # Finaliza el cronómetro
+        # Finalizamos la medición del tiempo de búsqueda.
         fin_busqueda = time.time()
         tiempo_busqueda = fin_busqueda - inicio_busqueda
 
-        # Resultado
+        # Damos los resultados de la búsqueda.
         if indice != -1:
             resultado = f"Elemento encontrado en la posición {indice}"
         else:
@@ -145,6 +150,7 @@ def buscar_elemento(lista, ordenada):
         print(f"Tiempo de búsqueda: {tiempo_busqueda:.6f} segundos")
         return tiempo_busqueda
     else:
+        # Retornamos 0 si la lista está vacía.
         return 0.0
 
 
@@ -158,8 +164,10 @@ def mostrar_resultados(tiempo_ordenamiento, tiempo_busqueda):
 
 def main():
     
+    # Asignamos una variable para controlar el bucle principal del programa.
     bandera = True
 
+    # Iniciamos el bucle principal del programa gracias a `bandera`
     while bandera:
         # Obtenemos la lista original y la mostramos.
         lista_original = obtener_lista()
@@ -170,14 +178,17 @@ def main():
 
         # Permitir buscar en cualquier lista, ordenada o no.
         if esta_ordenada:
+            # Si la lista está ordenada, preguntamos al usuario si desea buscar en la lista ordenada.
             lista_para_buscar = lista_ordenada
         else:
+            # Si la lista no está ordenada, buscamos directamente en la lista original con búsqueda lineal.
             lista_para_buscar = lista_original
 
+        # Buscamos el elemento elegido o aleatorio y medimos el tiempo de búsqueda.
         tiempo_busqueda = buscar_elemento(lista_para_buscar, esta_ordenada)
         mostrar_resultados(tiempo_ordenamiento, tiempo_busqueda)
 
-        # Preguntamos al usuario si desea realizar otra operación.
+        # Preguntamos al usuario si desea realizar otra operación. En caso de que no, bandera pasa a `False` y el bucle termina.
 
         respuesta = input("\n¿Querés realizar otra operación? (S/N): ").strip().lower()
         if respuesta != 's':
