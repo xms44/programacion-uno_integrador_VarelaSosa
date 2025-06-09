@@ -13,15 +13,14 @@ El objetivo principal del trabajo es desarrollar un programa en Python que, medi
 
 ## Video explicativo
 
-[Título del video]()
+[Programación I Integrador | “Implementación y análisis de algoritmos de ordenamiento y búsqueda...”](https://youtu.be/F-snpfuKj84)
 
-[Presentación del video (si aplica)]()
 
 ## Contenido
 
-- [Programa Completo en un solo .py](./programacion-uno_integrador.py) -> 
-- [Programa Modularizado](./src/main.py) -> 
-- [Informe general](./informe_general) -> 
+- [Programa Completo en un solo .py](./programacion-uno_integrador.py) 
+- [Programa Modularizado](./src/main.py) 
+- [Informe general (PDF)](./programacion-uno_integrador_VarelaSosa.pdf)
 
 --
 
@@ -31,6 +30,18 @@ El objetivo principal del trabajo es desarrollar un programa en Python que, medi
 
 ## Resultados obtenidos y observaciones finales
 
+- Durante las pruebas del programa se confirmó que cumple con los objetivos propuestos: permite generar listas, ordenarlas con Bubble Sort y realizar búsquedas con algoritmos lineal o binario. Se validó el funcionamiento correcto en listas pequeñas y medianas, y se compararon tiempos reales de ejecución.
+
+- En listas cortas, la búsqueda lineal resultó más rápida que la binaria, principalmente porque no requiere condiciones previas. Además, se destacó la utilidad de mostrar paso a paso el ordenamiento, y las validaciones guiaron correctamente al usuario en cada interacción.
+
+- El proyecto refuerza la importancia de elegir algoritmos según el contexto y muestra claramente cómo el orden previo de los datos impacta en el rendimiento de las búsquedas.
+
+## Tecnologías utilizadas
+
+- Python
+- Visual Studio Code
+- GitHub
+- YouTube (para presentación)
 
 ## Licencia
 
